@@ -10,9 +10,10 @@ class GamesController < ApplicationController
   end
 
   def score
-    @word = params[:word]
+    @word = params[:word].upcase
     @letters = params[:theletters]
     @word_letters = @word.split('')
+    @check = @word_letters.all? { |letter| @word_letters.count(letter) <= @letters.count(letter) }
     raise
 
     # incorrect = "Sorry, but #{@word} can't be made out of #{@letters}"
