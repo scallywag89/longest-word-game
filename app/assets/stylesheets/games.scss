@@ -15,8 +15,46 @@
   margin-right: 8px;
 }
 
+#searchbar {
+  padding: 8px 16px;
+  border-radius: 16px;
+  width: 200px;
+}
+
+#button {
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+ul {
+  width: 100%;
+  text-align: center;
+}
+
 li {
   color: white;
   font-weight: bold;
   font-size: 36px;
+}
+
+a {
+  text-decoration: none;
+  color: #8abce8;
+}
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  text-align: center;
+}
+
+form {
+  text-align: center;
+}
+
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 48px;
+  margin: 0 auto;
+  text-align: center;
 }

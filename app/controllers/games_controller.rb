@@ -13,13 +13,22 @@ class GamesController < ApplicationController
     @word = params[:word].upcase
     @letters = params[:theletters]
     @word_letters = @word.split('')
-    @check = @word_letters.all? { |letter| @word_letters.count(letter) <= @letters.count(letter) }
-    raise
+    check = @word_letters.all? { |letter| @word_letters.count(letter) <= @letters.count(letter) }
+    # API BIT
+    response = URI.open("https://wagon-dictionary.herokuapp.com/#{@word}")
+    json = JSON.parse(response.read)
 
-    # incorrect = "Sorry, but #{@word} can't be made out of #{@letters}"
-    # invalid = "Sorry, but #{@word} does not seem to be a valid English word..."
-    # correct = "Congratulations! #{@word} is a valid English word!"
-    # if @word
+    correct = "Congratulations! #{@word} is a valid English word!"
+    incorrect = "Sorry, but #{@word} can't be made out of #{@letters}"
+    invalid = "Sorry, but #{@word} does not seem to be a valid English word..."
+
+    if !json['found']
+      @result = invalid
+    elsif check && json['found']
+      @result = correct
+    elsif !check
+      @result = incorrect
+    end
   end
 
 end
